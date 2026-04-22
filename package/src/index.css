@@ -1,0 +1,14 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #fff9fb 0%, #f7efff 48%, #eef6ff 100%);
+}
+
+* {
+  box-sizing: border-box;
+}

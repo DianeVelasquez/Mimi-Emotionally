@@ -6,13 +6,13 @@ const baselightTheme = createTheme({
   direction: 'ltr',
   palette: {
     primary: {
-      main: "#1e4db7",
-      light: "#ddebff",
+      main: "#7c3aed",
+      light: "#f1e8ff",
       transparent: "#ffffff00"
     },
     secondary: {
-      main: "#1a97f5",
-      light: "#edf7ff",
+      main: "#ec4899",
+      light: "#ffe6f2",
     },
     success: {
       main: '#13DEB9',
@@ -21,9 +21,9 @@ const baselightTheme = createTheme({
       contrastText: '#ffffff',
     },
     info: {
-      main: '#539BFF',
-      light: '#EBF3FE',
-      dark: '#1682d4',
+      main: '#8b5cf6',
+      light: '#f3e8ff',
+      dark: '#6d28d9',
       contrastText: '#ffffff',
     },
     error: {
@@ -45,24 +45,24 @@ const baselightTheme = createTheme({
     },
     grey: {
       100: '#F2F6FA',
-      200: '#EAEFF4',
-      300: '#DFE5EF',
-      400: '#7C8FAC',
-      500: '#5A6A85',
-      600: '#2A3547',
+      200: '#F4EFFE',
+      300: '#E8DEF8',
+      400: '#8E88A8',
+      500: '#625A7A',
+      600: '#302742',
       700: '#dfe5ef'
 
     },
     text: {
-      primary: '#2A3547',
-      secondary: '#5A6A85',
+      primary: '#2f2440',
+      secondary: '#6f6682',
     },
     action: {
       disabledBackground: 'rgba(73,82,88,0.12)',
       hoverOpacity: 0.02,
       hover: '#f6f9fc',
     },
-    divider: '#e5eaef',
+    divider: '#eadff5',
   },
   typography,
   shadows,
@@ -125,7 +125,7 @@ const baselightTheme = createTheme({
           },
           borderRadius: "7px",
           '&.Mui-focused .MuiOutlinedInput-notchedOutline, &:hover .MuiOutlinedInput-notchedOutline': {
-            borderColor: '#1e4db7 !important'
+            borderColor: '#7c3aed !important'
           }
         },
       },
