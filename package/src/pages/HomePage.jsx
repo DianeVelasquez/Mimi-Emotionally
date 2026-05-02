@@ -19,77 +19,39 @@ import VerifiedRoundedIcon from '@mui/icons-material/VerifiedRounded';
 import TimelineRoundedIcon from '@mui/icons-material/TimelineRounded';
 import BlurOnRoundedIcon from '@mui/icons-material/BlurOnRounded';
 import { Link as RouterLink } from 'react-router';
-
-const steps = [
-  {
-    title: 'Upload a short audio sample',
-    description: 'Start with a music snippet or audio clip and send it to Mimi for analysis.',
-    icon: <QueueMusicRoundedIcon color="primary" />,
-  },
-  {
-    title: 'Extract acoustic features',
-    description: 'The backend transforms the waveform into a numerical representation the model can interpret.',
-    icon: <InsightsRoundedIcon color="primary" />,
-  },
-  {
-    title: 'Receive an emotional insight',
-    description: 'Mimi predicts the most likely emotional label and presents the result in a clearer, portfolio-ready UI.',
-    icon: <PsychologyRoundedIcon color="primary" />,
-  },
-];
-
-const highlights = [
-  'Modern React + Vite frontend rebuilt around a real product journey.',
-  'Audio upload flow designed to showcase ML inference clearly.',
-  'Transparent product narrative that explains both value and limitations.',
-];
-
-const trustSignals = [
-  { label: 'Emotional identity', value: 'Reframed' },
-  { label: 'Core ML classes', value: '4 emotions' },
-  { label: 'Product focus', value: 'Sound → feeling' },
-];
-
-const useCases = [
-  {
-    title: 'Portfolio storytelling',
-    description: 'Show how an ML inference flow becomes a designed product experience instead of a classroom demo.',
-    icon: <VerifiedRoundedIcon color="primary" />,
-  },
-  {
-    title: 'Audio intelligence demo',
-    description: 'Use Mimi to explain how features, prediction and interpretation can live together in a single UX.',
-    icon: <TimelineRoundedIcon color="primary" />,
-  },
-  {
-    title: 'Product thinking + ML',
-    description: 'Demonstrate that model output alone is not enough; framing, trust and clarity matter too.',
-    icon: <BlurOnRoundedIcon color="primary" />,
-  },
-];
+import { useLanguage } from '../i18n/LanguageContext';
 
 export default function HomePage() {
+  const { copy } = useLanguage();
+
+  const steps = [
+    { ...copy.home.stepsSection.items[0], icon: <QueueMusicRoundedIcon color="primary" /> },
+    { ...copy.home.stepsSection.items[1], icon: <InsightsRoundedIcon color="primary" /> },
+    { ...copy.home.stepsSection.items[2], icon: <PsychologyRoundedIcon color="primary" /> },
+  ];
+
+  const useCases = [
+    { ...copy.home.useCases[0], icon: <VerifiedRoundedIcon color="primary" /> },
+    { ...copy.home.useCases[1], icon: <TimelineRoundedIcon color="primary" /> },
+    { ...copy.home.useCases[2], icon: <BlurOnRoundedIcon color="primary" /> },
+  ];
+
   return (
     <Box>
       <Container maxWidth="lg" sx={{ py: { xs: 8, md: 10 } }}>
         <Grid container spacing={5} alignItems="center">
           <Grid size={{ xs: 12, md: 6 }}>
             <Stack spacing={3}>
-              <Chip
-                label="Portfolio rebuild in progress"
-                color="primary"
-                sx={{ alignSelf: 'flex-start', fontWeight: 700 }}
-              />
+              <Chip label={copy.home.chip} color="primary" sx={{ alignSelf: 'flex-start', fontWeight: 700 }} />
               <Typography variant="h1" sx={{ maxWidth: 560 }}>
-                Let sound feel personal before it feels technical.
+                {copy.home.title}
               </Typography>
               <Typography variant="h5" color="text.secondary" sx={{ maxWidth: 560 }}>
-                Mimi turns audio into an emotional reading with a softer interface, calmer pacing and
-                a more human product voice.
+                {copy.home.description}
               </Typography>
 
               <Stack direction="row" spacing={1.5} useFlexGap flexWrap="wrap">
-                {trustSignals.map((signal) => (
+                {copy.home.trustSignals.map((signal) => (
                   <Card key={signal.label} sx={{ minWidth: 140, borderRadius: 4, boxShadow: 'none', border: '1px solid rgba(42, 53, 71, 0.08)' }}>
                     <CardContent sx={{ p: 2.25 }}>
                       <Typography variant="overline" color="text.secondary">
@@ -102,22 +64,16 @@ export default function HomePage() {
               </Stack>
 
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-                <Button
-                  component={RouterLink}
-                  to="/analyze"
-                  variant="contained"
-                  size="large"
-                  endIcon={<PlayArrowRoundedIcon />}
-                >
-                  Analyze audio
+                <Button component={RouterLink} to="/analyze" variant="contained" size="large" endIcon={<PlayArrowRoundedIcon />}>
+                  {copy.home.primaryCta}
                 </Button>
                 <Button component={RouterLink} to="/about" variant="outlined" size="large">
-                  Explore methodology
+                  {copy.home.secondaryCta}
                 </Button>
               </Stack>
 
               <Stack spacing={1.5}>
-                {highlights.map((item) => (
+                {copy.home.highlights.map((item) => (
                   <Typography key={item} variant="body1" color="text.secondary">
                     • {item}
                   </Typography>
@@ -139,7 +95,7 @@ export default function HomePage() {
               <CardContent sx={{ p: { xs: 3, md: 4 } }}>
                 <Stack spacing={3}>
                   <Typography variant="overline" sx={{ opacity: 0.72, letterSpacing: '0.12em' }}>
-                    audio → features → model → insight
+                    {copy.home.hero.overline}
                   </Typography>
                   <Box
                     sx={{
@@ -150,25 +106,24 @@ export default function HomePage() {
                     }}
                   >
                     <Typography variant="h3" gutterBottom>
-                      A more emotive demo surface
+                      {copy.home.hero.title}
                     </Typography>
                     <Typography variant="body1" sx={{ opacity: 0.82, mb: 3 }}>
-                      Instead of reading like a cold dashboard, the experience now tries to feel a
-                      little closer to the emotional subject it is analyzing.
+                      {copy.home.hero.description}
                     </Typography>
 
                     <Stack spacing={1.5} sx={{ mb: 3 }}>
                       <Stack direction="row" justifyContent="space-between">
                         <Typography variant="body2" sx={{ opacity: 0.72 }}>
-                          Emotional resonance
+                          {copy.home.hero.metricLabel}
                         </Typography>
                         <Typography variant="body2" sx={{ opacity: 0.9 }}>
-                          91%
+                          {copy.home.hero.metricValue}
                         </Typography>
                       </Stack>
                       <LinearProgress
                         variant="determinate"
-                        value={91}
+                        value={Number.parseInt(copy.home.hero.metricValue, 10)}
                         sx={{
                           height: 10,
                           borderRadius: 99,
@@ -185,7 +140,7 @@ export default function HomePage() {
                       {['Relax', 'Happy', 'Sad', 'Angry'].map((emotion) => (
                         <Chip
                           key={emotion}
-                          label={emotion}
+                          label={copy.common.emotions[emotion]}
                           sx={{
                             bgcolor: 'rgba(255,255,255,0.12)',
                             color: 'white',
@@ -197,29 +152,22 @@ export default function HomePage() {
                   </Box>
 
                   <Typography variant="body2" sx={{ opacity: 0.75 }}>
-                    The visual system now leans warmer, more expressive and more aligned with the
-                    emotional promise of the product.
+                    {copy.home.hero.footer}
                   </Typography>
 
                   <Divider sx={{ borderColor: 'rgba(255,255,255,0.14)' }} />
 
                   <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-                    <Box sx={{ flex: 1 }}>
-                      <Typography variant="overline" sx={{ opacity: 0.68 }}>
-                        experience goal
-                      </Typography>
-                      <Typography variant="body2" sx={{ opacity: 0.88 }}>
-                        Replace dashboard clutter with atmosphere, softness and a more memorable first impression.
-                      </Typography>
-                    </Box>
-                    <Box sx={{ flex: 1 }}>
-                      <Typography variant="overline" sx={{ opacity: 0.68 }}>
-                        current focus
-                      </Typography>
-                      <Typography variant="body2" sx={{ opacity: 0.88 }}>
-                        Make the ML demo feel emotionally legible, not just technically functional.
-                      </Typography>
-                    </Box>
+                    {copy.home.hero.goals.map((item) => (
+                      <Box key={item.label} sx={{ flex: 1 }}>
+                        <Typography variant="overline" sx={{ opacity: 0.68 }}>
+                          {item.label}
+                        </Typography>
+                        <Typography variant="body2" sx={{ opacity: 0.88 }}>
+                          {item.text}
+                        </Typography>
+                      </Box>
+                    ))}
                   </Stack>
                 </Stack>
               </CardContent>
@@ -230,11 +178,9 @@ export default function HomePage() {
 
       <Container maxWidth="lg" sx={{ pb: { xs: 8, md: 10 } }}>
         <Stack spacing={2} sx={{ mb: 4 }}>
-          <Typography variant="h2">How the experience works</Typography>
+          <Typography variant="h2">{copy.home.stepsSection.title}</Typography>
           <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 720 }}>
-            The goal is to showcase the complete journey: a user uploads audio, the backend
-            extracts features, the model predicts an emotional class and the interface explains the
-            result in a way that is easy to understand.
+            {copy.home.stepsSection.description}
           </Typography>
         </Stack>
 
@@ -257,7 +203,7 @@ export default function HomePage() {
                       >
                         {step.icon}
                       </Box>
-                      <Chip label={`Step ${index + 1}`} size="small" />
+                      <Chip label={`${copy.home.stepsSection.stepLabel} ${index + 1}`} size="small" />
                     </Stack>
                     <Typography variant="h4">{step.title}</Typography>
                     <Typography color="text.secondary">{step.description}</Typography>

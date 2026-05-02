@@ -10,36 +10,34 @@
     min-height: 100vh;
 }
 
-.mimi-cat-float {
-    animation: mimiFloat 2.8s ease-in-out infinite;
+.mimi-intro-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.62;
+    filter: saturate(1.05) contrast(1.03) brightness(0.62);
+    transform: scale(1.04);
+    animation: mimiVideoDrift 7s ease-out forwards;
 }
 
-.mimi-cat-eye-right {
-    animation: mimiWinkEye 3.2s ease-in-out infinite;
-    transform-origin: center;
+.mimi-intro-bar {
+    animation: mimiEqualizer 1.8s ease-in-out infinite;
+    transform-origin: center bottom;
 }
 
-.mimi-cat-wink {
-    opacity: 0;
-    animation: mimiWinkLine 3.2s ease-in-out infinite;
+@keyframes mimiVideoDrift {
+    0% { transform: scale(1.08) translateY(0px); }
+    100% { transform: scale(1.02) translateY(-10px); }
 }
 
-@keyframes mimiFloat {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+@keyframes mimiEqualizer {
+    0%, 100% { transform: scaleY(0.45); opacity: 0.6; }
+    50% { transform: scaleY(1); opacity: 1; }
 }
 
-@keyframes mimiWinkEye {
-    0%, 68%, 100% { transform: scaleY(1); opacity: 1; }
-    72%, 82% { transform: scaleY(0.08); opacity: 0; }
-}
-
-@keyframes mimiWinkLine {
-    0%, 68%, 100% { opacity: 0; }
-    72%, 82% { opacity: 1; }
-}
-
-@keyframes introGlow {
-    0%, 100% { transform: scale(0.92); opacity: 0.8; }
-    50% { transform: scale(1.02); opacity: 1; }
+@keyframes mimiIntroPulse {
+    0%, 100% { transform: translateY(0); box-shadow: 0 0 0 rgba(255,255,255,0); }
+    50% { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(11, 17, 42, 0.18); }
 }

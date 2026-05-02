@@ -5,7 +5,7 @@ export const translations = {
     languageLabel: 'Language',
     languages: { en: 'EN', es: 'ES' },
     common: {
-      brandTagline: 'Emotional Audio Intelligence',
+      brandTagline: 'Emotional audio classifier',
       emotions: {
         Relax: 'Relax',
         Happy: 'Happy',
@@ -240,7 +240,7 @@ export const translations = {
     languageLabel: 'Idioma',
     languages: { en: 'EN', es: 'ES' },
     common: {
-      brandTagline: 'Inteligencia Emocional de Audio',
+      brandTagline: 'Clasificador emocional con audio',
       emotions: {
         Relax: 'Calma',
         Happy: 'Feliz',
@@ -252,24 +252,24 @@ export const translations = {
       eyebrow: 'Un primer momento más sensible',
       title: 'Mimi escucha como un recuerdo antes de leerse como un modelo.',
       description:
-        'Una apertura emocional construida alrededor del nuevo video de Mimi, para que el producto empiece con atmósfera y no con ruido.',
-      caption: 'Música, emoción e intuición de máquina — sostenidas en un mismo respiro.',
+        '¿Sabías que la música puede decir mucho de cómo nos sentimos? Mimi escucha el audio y te lo traduce a un lenguaje emocional.',
+      caption: 'Música, emoción e interpretación — sostenidas en un mismo respiro.',
       skip: 'Saltar intro',
     },
     layout: {
-      nav: { home: 'Inicio', analyze: 'Analizar', about: 'Acerca de' },
+      nav: { home: 'Inicio', analyze: 'Analizar audio', about: 'Acerca de' },
       cta: 'Probar demo',
       footerLead:
-        'Pensado para transformar una demo académica de ML en una historia de producto más cálida y expresiva.',
+        'Este proyecto es una refactorización del proyecto original para que Mimi se convierta en un producto real.',
       footerSupport:
-        'Frontend reconstruido con React, Vite y MUI alrededor de un recorrido de audio más suave, con emoción, confianza y claridad.',
-      footerChip: 'Iteración de portfolio',
+        'Frontend reconstruido con React, Vite y MUI. El backend se ha refactorizado para que Mimi pueda analizar el audio y devolver un resultado emocional.',
+      footerChip: 'Refactorización de proyecto',
     },
     home: {
-      chip: 'Reconstrucción de portfolio en progreso',
-      title: 'Que el sonido se sienta personal antes de sentirse técnico.',
+      chip: 'Emociones encapsuladas en notas musicales',
+      title: '¿Sabes lo que la música refleja sobre tus emociones?',
       description:
-        'Mimi convierte audio en una lectura emocional con una interfaz más suave, un ritmo más calmo y una voz de producto más humana.',
+        'Mimi convierte el audio de tus canciones en una lectura emocional que te permite entender cómo te sientes en cada momento.',
       trustSignals: [
         { label: 'Identidad emocional', value: 'Reencuadrada' },
         { label: 'Clases ML base', value: '4 emociones' },

@@ -1,15 +1,12 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-import './App.css'
+import './App.css';
 
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { useEffect, useState } from 'react';
-
-import { baselightTheme } from "./theme/DefaultColors";
 import { RouterProvider } from 'react-router';
-import router from "./routes/Router.js"
 import EmotionalIntro from './components/intro/EmotionalIntro';
+import { LanguageProvider } from './i18n/LanguageContext';
+import router from './routes/Router.js';
+import { baselightTheme } from './theme/DefaultColors';
 
 function App() {
   const theme = baselightTheme;
@@ -18,7 +15,7 @@ function App() {
   useEffect(() => {
     const timer = window.setTimeout(() => {
       setShowIntro(false);
-    }, 3200);
+    }, 6200);
 
     return () => window.clearTimeout(timer);
   }, []);
@@ -26,10 +23,12 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      {showIntro && <EmotionalIntro />}
-      <RouterProvider router={router} />
+      <LanguageProvider>
+        {showIntro && <EmotionalIntro onComplete={() => setShowIntro(false)} />}
+        <RouterProvider router={router} />
+      </LanguageProvider>
     </ThemeProvider>
   );
 }
 
-export default App
+export default App;

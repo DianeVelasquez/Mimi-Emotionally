@@ -7,17 +7,15 @@ import {
   Container,
   Divider,
   Stack,
+  ToggleButton,
+  ToggleButtonGroup,
   Toolbar,
   Typography,
 } from '@mui/material';
 import GraphicEqRoundedIcon from '@mui/icons-material/GraphicEqRounded';
+import TranslateRoundedIcon from '@mui/icons-material/TranslateRounded';
 import { NavLink, Outlet } from 'react-router';
-
-const navItems = [
-  { label: 'Home', to: '/' },
-  { label: 'Analyze', to: '/analyze' },
-  { label: 'About', to: '/about' },
-];
+import { useLanguage } from '../../i18n/LanguageContext';
 
 const navButtonStyles = {
   color: 'text.primary',
@@ -29,6 +27,14 @@ const navButtonStyles = {
 };
 
 export default function AppLayout() {
+  const { language, setLanguage, copy } = useLanguage();
+
+  const navItems = [
+    { label: copy.layout.nav.home, to: '/' },
+    { label: copy.layout.nav.analyze, to: '/analyze' },
+    { label: copy.layout.nav.about, to: '/about' },
+  ];
+
   return (
     <Box
       sx={{
@@ -48,7 +54,7 @@ export default function AppLayout() {
         }}
       >
         <Container maxWidth="lg">
-          <Toolbar disableGutters sx={{ py: 1.5, justifyContent: 'space-between', gap: 2 }}>
+          <Toolbar disableGutters sx={{ py: 1.5, justifyContent: 'space-between', gap: 2, flexWrap: { xs: 'wrap', md: 'nowrap' } }}>
             <Stack direction="row" spacing={1.5} alignItems="center">
               <Box
                 sx={{
@@ -69,26 +75,67 @@ export default function AppLayout() {
                   Mimi
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Emotional Audio Intelligence
+                  {copy.common.brandTagline}
                 </Typography>
               </Box>
             </Stack>
 
             <Stack direction="row" spacing={1} alignItems="center" sx={{ display: { xs: 'none', md: 'flex' } }}>
               {navItems.map((item) => (
-                <Button
-                  key={item.to}
-                  component={NavLink}
-                  to={item.to}
-                  sx={navButtonStyles}
-                >
+                <Button key={item.to} component={NavLink} to={item.to} sx={navButtonStyles}>
                   {item.label}
                 </Button>
               ))}
 
               <Button component={NavLink} to="/analyze" variant="contained" sx={{ ml: 1 }}>
-                Try the demo
+                {copy.layout.cta}
               </Button>
+            </Stack>
+
+            <Stack direction="row" spacing={1.25} alignItems="center" sx={{ ml: { xs: 0, md: 'auto' } }}>
+              <Stack
+                direction="row"
+                spacing={0.75}
+                alignItems="center"
+                sx={{
+                  px: 1.2,
+                  py: 0.8,
+                  borderRadius: 999,
+                  bgcolor: 'rgba(255,255,255,0.62)',
+                  border: '1px solid rgba(42, 53, 71, 0.08)',
+                }}
+              >
+                <TranslateRoundedIcon sx={{ fontSize: 18, color: 'primary.main' }} />
+                <Typography variant="body2" fontWeight={700} sx={{ display: { xs: 'none', sm: 'block' } }}>
+                  {copy.languageLabel}
+                </Typography>
+                <ToggleButtonGroup
+                  exclusive
+                  size="small"
+                  value={language}
+                  onChange={(_, value) => {
+                    if (value) setLanguage(value);
+                  }}
+                  sx={{
+                    '& .MuiToggleButton-root': {
+                      px: 1.2,
+                      py: 0.5,
+                      border: 0,
+                      borderRadius: 999,
+                      fontWeight: 700,
+                      color: 'text.secondary',
+                    },
+                    '& .Mui-selected': {
+                      bgcolor: 'primary.main !important',
+                      color: 'white !important',
+                      boxShadow: '0 12px 24px rgba(30, 77, 183, 0.22)',
+                    },
+                  }}
+                >
+                  <ToggleButton value="es">{copy.languages.es}</ToggleButton>
+                  <ToggleButton value="en">{copy.languages.en}</ToggleButton>
+                </ToggleButtonGroup>
+              </Stack>
             </Stack>
           </Toolbar>
         </Container>
@@ -108,15 +155,15 @@ export default function AppLayout() {
         >
           <Stack spacing={0.5}>
             <Typography variant="body2" color="text.secondary">
-              Built to turn an academic ML demo into a warmer, more emotionally expressive product story.
+              {copy.layout.footerLead}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Frontend rebuilt with React, Vite and MUI around a softer audio journey with feeling, trust and clarity.
+              {copy.layout.footerSupport}
             </Typography>
           </Stack>
 
           <Stack direction="row" spacing={1.5} alignItems="center">
-            <Chip label="Portfolio iteration" color="primary" variant="outlined" />
+            <Chip label={copy.layout.footerChip} color="primary" variant="outlined" />
             <Avatar sx={{ width: 34, height: 34, bgcolor: 'primary.main', fontSize: 14 }}>M</Avatar>
           </Stack>
         </Stack>
