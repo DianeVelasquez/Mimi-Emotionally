@@ -12,9 +12,6 @@ import {
   Typography,
 } from '@mui/material';
 import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
-import InsightsRoundedIcon from '@mui/icons-material/InsightsRounded';
-import PsychologyRoundedIcon from '@mui/icons-material/PsychologyRounded';
-import QueueMusicRoundedIcon from '@mui/icons-material/QueueMusicRounded';
 import VerifiedRoundedIcon from '@mui/icons-material/VerifiedRounded';
 import TimelineRoundedIcon from '@mui/icons-material/TimelineRounded';
 import BlurOnRoundedIcon from '@mui/icons-material/BlurOnRounded';
@@ -23,12 +20,6 @@ import { useLanguage } from '../i18n/LanguageContext';
 
 export default function HomePage() {
   const { copy } = useLanguage();
-
-  const steps = [
-    { ...copy.home.stepsSection.items[0], icon: <QueueMusicRoundedIcon color="primary" /> },
-    { ...copy.home.stepsSection.items[1], icon: <InsightsRoundedIcon color="primary" /> },
-    { ...copy.home.stepsSection.items[2], icon: <PsychologyRoundedIcon color="primary" /> },
-  ];
 
   const useCases = [
     { ...copy.home.useCases[0], icon: <VerifiedRoundedIcon color="primary" /> },
@@ -52,8 +43,27 @@ export default function HomePage() {
 
               <Stack direction="row" spacing={1.5} useFlexGap flexWrap="wrap">
                 {copy.home.trustSignals.map((signal) => (
-                  <Card key={signal.label} sx={{ minWidth: 140, borderRadius: 4, boxShadow: 'none', border: '1px solid rgba(42, 53, 71, 0.08)' }}>
-                    <CardContent sx={{ p: 2.25 }}>
+                  <Card
+                    key={signal.label}
+                    sx={{
+                      flex: '1 1 170px',
+                      minWidth: 0,
+                      borderRadius: 4,
+                      boxShadow: 'none',
+                      border: '1px solid rgba(42, 53, 71, 0.08)',
+                      display: 'flex',
+                    }}
+                  >
+                    <CardContent
+                      sx={{
+                        p: 2.25,
+                        width: '100%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'space-between',
+                        minHeight: 108,
+                      }}
+                    >
                       <Typography variant="overline" color="text.secondary">
                         {signal.label}
                       </Typography>
@@ -173,45 +183,6 @@ export default function HomePage() {
               </CardContent>
             </Card>
           </Grid>
-        </Grid>
-      </Container>
-
-      <Container maxWidth="lg" sx={{ pb: { xs: 8, md: 10 } }}>
-        <Stack spacing={2} sx={{ mb: 4 }}>
-          <Typography variant="h2">{copy.home.stepsSection.title}</Typography>
-          <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 720 }}>
-            {copy.home.stepsSection.description}
-          </Typography>
-        </Stack>
-
-        <Grid container spacing={3}>
-          {steps.map((step, index) => (
-            <Grid key={step.title} size={{ xs: 12, md: 4 }}>
-              <Card sx={{ height: '100%' }}>
-                <CardContent sx={{ p: 3.5 }}>
-                  <Stack spacing={2}>
-                    <Stack direction="row" spacing={1.5} alignItems="center">
-                      <Box
-                        sx={{
-                          width: 44,
-                          height: 44,
-                          borderRadius: 3,
-                          display: 'grid',
-                          placeItems: 'center',
-                          bgcolor: 'primary.light',
-                        }}
-                      >
-                        {step.icon}
-                      </Box>
-                      <Chip label={`${copy.home.stepsSection.stepLabel} ${index + 1}`} size="small" />
-                    </Stack>
-                    <Typography variant="h4">{step.title}</Typography>
-                    <Typography color="text.secondary">{step.description}</Typography>
-                  </Stack>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
         </Grid>
       </Container>
 

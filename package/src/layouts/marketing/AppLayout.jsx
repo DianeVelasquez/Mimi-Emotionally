@@ -12,7 +12,6 @@ import {
   Toolbar,
   Typography,
 } from '@mui/material';
-import GraphicEqRoundedIcon from '@mui/icons-material/GraphicEqRounded';
 import TranslateRoundedIcon from '@mui/icons-material/TranslateRounded';
 import { NavLink, Outlet } from 'react-router';
 import { useLanguage } from '../../i18n/LanguageContext';
@@ -26,12 +25,24 @@ const navButtonStyles = {
   },
 };
 
+function BrandMark({ compact = false }) {
+  return (
+    <div className={compact ? 'brand-lockup gap-1.5' : 'brand-lockup'}>
+      <span
+        data-text="DUZZZ"
+        className="brand-mark"
+      >
+        DUZZZ
+      </span>
+    </div>
+  );
+}
+
 export default function AppLayout() {
   const { language, setLanguage, copy } = useLanguage();
 
   const navItems = [
     { label: copy.layout.nav.home, to: '/' },
-    { label: copy.layout.nav.analyze, to: '/analyze' },
     { label: copy.layout.nav.about, to: '/about' },
   ];
 
@@ -61,14 +72,13 @@ export default function AppLayout() {
                   width: 44,
                   height: 44,
                   borderRadius: 3,
-                  display: 'grid',
-                  placeItems: 'center',
-                  background: 'linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%)',
-                  color: 'white',
+                  overflow: 'hidden',
                   boxShadow: '0 18px 30px rgba(168, 85, 247, 0.24)',
+                  bgcolor: 'rgba(255,255,255,0.9)',
+                  border: '1px solid rgba(42, 53, 71, 0.08)',
                 }}
               >
-                <GraphicEqRoundedIcon />
+                <Box component="img" src="/icon.png" alt="Mimi icon" sx={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </Box>
               <Box>
                 <Typography variant="h5" fontWeight={700} lineHeight={1}>
@@ -164,7 +174,7 @@ export default function AppLayout() {
 
           <Stack direction="row" spacing={1.5} alignItems="center">
             <Chip label={copy.layout.footerChip} color="primary" variant="outlined" />
-            <Avatar sx={{ width: 34, height: 34, bgcolor: 'primary.main', fontSize: 14 }}>M</Avatar>
+            <BrandMark compact={true} />
           </Stack>
         </Stack>
       </Container>

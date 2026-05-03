@@ -12,3 +12,74 @@ body {
 * {
   box-sizing: border-box;
 }
+
+.brand-mark {
+  position: relative;
+  display: inline-block;
+
+  font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  transform: skew(-8deg) rotate(-2deg);
+
+  color: var(--brand-text, #0f172a);
+
+  /* Estado base (más sobrio) */
+  text-shadow:
+    0 0 2px rgba(77, 226, 255, 0.15),
+    0 0 6px rgba(124, 92, 255, 0.15);
+
+  transition: all 0.4s ease;
+}
+
+/* Hover = vida */
+.brand-lockup:hover .brand-mark {
+  text-shadow:
+    0 0 6px rgba(77, 226, 255, 0.6),
+    0 0 14px rgba(124, 92, 255, 0.6),
+    0 0 22px rgba(77, 226, 255, 0.3);
+
+  transform: skew(-8deg) rotate(-2deg) scale(1.03);
+}
+
+/* Glow inferior */
+.brand-mark::after {
+  content: '';
+  position: absolute;
+  left: 0.2rem;
+  right: -0.1rem;
+  bottom: 0.2rem;
+  height: 0.3rem;
+
+  background: linear-gradient(
+    90deg,
+    rgba(124, 92, 255, 0.1),
+    rgba(77, 226, 255, 0.25),
+    rgba(124, 92, 255, 0.1)
+  );
+
+  filter: blur(6px);
+  opacity: 0.4;
+
+  transition: all 0.4s ease;
+}
+
+/* Hover glow más fuerte */
+.brand-lockup:hover .brand-mark::after {
+  opacity: 0.9;
+  transform: translateX(6%);
+  cursor: pointer;
+}
+
+:root {
+  --brand-text: #0f172a;
+  --brand-subtext: rgba(15, 23, 42, 0.6);
+}
+
+[data-theme="dark"] {
+  --brand-text: #f8fbff;
+  --brand-subtext: rgba(255, 255, 255, 0.65);
+}

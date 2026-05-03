@@ -1,7 +1,8 @@
 {
-  "name": "flexy-free-react-app-vite",
+  "name": "mimi-emotionally-web",
   "private": true,
   "version": "1.0.0",
+  "description": "Bilingual React frontend for Mimi-Emotionally voice emotion analysis experience",
   "type": "module",
   "scripts": {
     "dev": "vite",
