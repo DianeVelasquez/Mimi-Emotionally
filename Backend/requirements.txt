@@ -1,2 +1,6 @@
 Flask
 flask-cors
+librosa
+numpy
+scipy
+tensorflow

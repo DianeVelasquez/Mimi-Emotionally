@@ -1,3 +1,12 @@
 # dependencies
 /node_modules
+/.venv/
+/Backend/venv/
+/package/node_modules/
+/package/dist/
+/.windsurf/
 
+# python backend runtime artifacts
+Backend/__pycache__/
+Backend/**/*.pyc
+Backend/uploads/
